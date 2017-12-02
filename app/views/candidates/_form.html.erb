@@ -1,14 +1,6 @@
-<% if candidate.errors.any? %>
-  <ul>
-  <% candidate.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= form_for(candidate) do |f| %>
-   姓名：<%= f.text_field :name %> <br />
-   年紀：<%= f.text_field :age %> <br />
-   黨派：<%= f.text_field :party %> <br />
+<%= simple_form_for(candidate) do |f| %>
+   姓名：<%= f.input :name %> <br />
+   年紀：<%= f.input :age %> <br />
+   黨派：<%= f.input :party %> <br />
    <%= f.submit %>
 <% end %>

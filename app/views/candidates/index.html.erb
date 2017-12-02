@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <td>得票數</td>
       <td>姓名</td>
       <td>黨派</td>
       <td>年紀</td>
@@ -12,6 +13,7 @@
   <tbody>
     <% @candidates.each do | candidate | %>
     <tr>
+      <td><%= candidate.vote_count %></td>
       <td><%= link_to candidate.name, candidate %></td>
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
