@@ -6,14 +6,19 @@
       <td>姓名</td>
       <td>黨派</td>
       <td>年紀</td>
+      <td>處理</td>
     </tr>
   </thead>
   <tbody>
     <% @candidates.each do | candidate | %>
     <tr>
-      <td><%= candidate.name %></td>
+      <td><%= link_to candidate.name, candidate_path(candidate) %></td>
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
+      <td>
+        <%= link_to "修改", edit_candidate_path(candidate) %>
+        <%= link_to "刪除", candidate_path(candidate), data: { confirm: "確定嗎?!",  method: "delete" } %>
+      </td>
     </tr>
     <% end %>
   </tbody>
