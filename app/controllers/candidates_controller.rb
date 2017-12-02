@@ -3,15 +3,16 @@ class CandidatesController < ApplicationController
     @candidates = Candidate.all
   end
 
+  def show
+    @candidate = Candidate.find_by(id: params[:id])
+  end
+
   def new
     @candidate = Candidate.new
   end
 
   def create
-    # 收集資料
-    # Strong parameters
-    clean_params = params.require(:candidate).permit(:name, :age, :party)
-    @candidate = Candidate.new(clean_params)
+    @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
       redirect_to candidates_path, notice: "新增成功"
@@ -25,10 +26,9 @@ class CandidatesController < ApplicationController
   end
 
   def update
-    clean_params = params.require(:candidate).permit(:name, :age, :party)
     @candidate = Candidate.find_by(id: params[:id])
 
-    if @candidate.update(clean_params)
+    if @candidate.update(candidate_params)
       redirect_to candidates_path, notice: "更新成功"
     else
       render "edit"
@@ -39,5 +39,10 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find_by(id: params[:id])
     @candidate.destroy
     redirect_to candidates_path, notice: "資料已刪除!"
+  end
+
+  private
+  def candidate_params
+    params.require(:candidate).permit(:name, :age, :party)
   end
 end
