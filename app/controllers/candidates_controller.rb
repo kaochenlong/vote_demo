@@ -40,7 +40,12 @@ class CandidatesController < ApplicationController
 
   private
   def candidate_params
-    params.require(:candidate).permit(:name, :age, :party)
+    params.require(:candidate).permit(
+      :name,
+      :age,
+      :party,
+      :comment
+    )
   end
 
   def find_candidate
