@@ -1,3 +1,11 @@
+<% if candidate.errors.any? %>
+  <ul>
+  <% candidate.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_for(candidate) do |f| %>
    姓名：<%= f.text_field :name %> <br />
    年紀：<%= f.text_field :age %> <br />

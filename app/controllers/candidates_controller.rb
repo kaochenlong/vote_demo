@@ -16,7 +16,7 @@ class CandidatesController < ApplicationController
     if @candidate.save
       redirect_to candidates_path, notice: "新增成功"
     else
-      #
+      render "new"
     end
   end
 
@@ -31,7 +31,7 @@ class CandidatesController < ApplicationController
     if @candidate.update(clean_params)
       redirect_to candidates_path, notice: "更新成功"
     else
-      # ...
+      render "edit"
     end
   end
 
