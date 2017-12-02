@@ -14,7 +14,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(clean_params)
 
     if @candidate.save
-      redirect_to candidates_path
+      redirect_to candidates_path, notice: "新增成功"
     else
       #
     end
@@ -29,7 +29,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find_by(id: params[:id])
 
     if @candidate.update(clean_params)
-      redirect_to candidates_path
+      redirect_to candidates_path, notice: "更新成功"
     else
       # ...
     end

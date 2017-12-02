@@ -1,0 +1,6 @@
+<%= form_for(@candidate) do |f| %>
+   姓名：<%= f.text_field :name %> <br />
+   年紀：<%= f.text_field :age %> <br />
+   黨派：<%= f.text_field :party %> <br />
+   <%= f.submit %>
+<% end %>
