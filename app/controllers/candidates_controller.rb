@@ -34,4 +34,10 @@ class CandidatesController < ApplicationController
       # ...
     end
   end
+
+  def destroy
+    @candidate = Candidate.find_by(id: params[:id])
+    @candidate.destroy
+    redirect_to candidates_path, notice: "資料已刪除!"
+  end
 end
