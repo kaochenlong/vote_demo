@@ -12,12 +12,12 @@
   <tbody>
     <% @candidates.each do | candidate | %>
     <tr>
-      <td><%= link_to candidate.name, candidate_path(candidate) %></td>
+      <td><%= link_to candidate.name, candidate %></td>
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
       <td>
         <%= link_to "修改", edit_candidate_path(candidate) %>
-        <%= link_to "刪除", candidate_path(candidate), data: { confirm: "確定嗎?!",  method: "delete" } %>
+        <%= link_to "刪除", candidate, data: { confirm: "確定嗎?!",  method: "delete" } %>
       </td>
     </tr>
     <% end %>
