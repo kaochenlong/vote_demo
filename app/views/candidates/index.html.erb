@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <td>得票數</td>
+      <td>投票</td>
       <td>姓名</td>
       <td>黨派</td>
       <td>年紀</td>
@@ -14,6 +15,7 @@
     <% @candidates.each do | candidate | %>
     <tr>
       <td><%= candidate.vote_count %></td>
+      <td><%= link_to "投票給這位!", vote_candidate_path(candidate), method: "post", class: "btn btn-xs btn-danger" %></td>
       <td><%= link_to candidate.name, candidate %></td>
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
