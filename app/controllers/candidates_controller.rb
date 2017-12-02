@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.all.order(vote_count: :desc)
   end
 
   def show
@@ -39,7 +39,16 @@ class CandidatesController < ApplicationController
   end
 
   def vote
-    @candidate.update(vote_count: @candidate.vote_count + 1)
+    ############
+    # v = Vote.create(ip_address: request.remote_ip, candidate_id: @candidate.id)
+
+    ############
+    # v = Vote.new(ip_address: request.remote_ip, candidate_id: @candidate.id)
+    # v.save
+
+    ############
+    @candidate.votes.create(ip_address: request.remote_ip)
+
     redirect_to candidates_path, notice: "投票成功!"
   end
 

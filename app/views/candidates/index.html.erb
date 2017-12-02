@@ -1,5 +1,4 @@
 <h1>候選人列表</h1>
-
 <table class="table">
   <thead>
     <tr>
@@ -14,7 +13,7 @@
   <tbody>
     <% @candidates.each do | candidate | %>
     <tr>
-      <td><%= candidate.vote_count %></td>
+      <td><%= candidate.votes.count %></td>
       <td><%= link_to "投票給這位!", vote_candidate_path(candidate), method: "post", class: "btn btn-xs btn-danger" %></td>
       <td><%= link_to candidate.name, candidate %></td>
       <td><%= candidate.party %></td>
